@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册表单</title>
+    <style>
+        div {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 800px;
+            margin: 0 auto;
+        }
+        .button {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>个人信息设置</h2>
+    <form action="exa3_2.jsp" method="post">
+        <div>
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div>
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div>
+            <label for="repeatPassword">重复密码:</label>
+            <input type="password" id="repeatPassword" name="repeatPassword">
+        </div>
+
+        <div>
+            <label>性别:</label>
+            <input type="radio" id="male" name="gender" value="男">
+            <label for="male">男</label>
+            <input type="radio" id="female" name="gender" value="女">
+            <label for="female">女</label>
+        </div>
+
+        <div>
+            <label for="birthYear">生日:</label>
+            <select id="birthYear" name="birthYear">
+                <option value="" disabled selected>年</option>
+                <!-- 年份选项将由 JavaScript 动态添加 -->
+            </select>
+            <label for="birthMonth"></label>
+            <select id="birthMonth" name="birthMonth">
+                <option value="" disabled selected>月</option>
+                <!-- 月份选项将由 JavaScript 动态添加 -->
+            </select>
+        </div>
+
+        <div>
+            <label>性格:</label>
+            <input type="checkbox" id="gentle" name="personality" value="温柔">
+            <label for="gentle">温柔</label>
+
+            <input type="checkbox" id="cheerful" name="personality" value="开朗">
+            <label for="cheerful">开朗</label>
+
+            <input type="checkbox" id="lively" name="personality" value="活泼">
+            <label for="lively">活泼</label>
+
+            <input type="checkbox" id="introverted" name="personality" value="内向">
+            <label for="introverted">内向</label>
+
+            <input type="checkbox" id="silent" name="personality" value="沉默">
+            <label for="silent">沉默</label>
+
+            <input type="checkbox" id="impatient" name="personality" value="急躁">
+            <label for="impatient">急躁</label>
+        </div>
+
+        <div>
+            <label for="education">教育程度:</label>
+            <select id="education" name="education">
+                <option value="未知" selected>未知</option>
+                <option value="中学">中学</option>
+                <option value="高中">高中</option>
+                <option value="专科">专科</option>
+                <option value="本科">本科</option>
+                <option value="硕士">硕士</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="bio">个人简介:</label><br>
+            <textarea id="bio" name="bio"></textarea>
+        </div>
+
+        <div class="button">
+            <input type="submit" value="注册">
+            <input type="reset" value="重置">
+        </div>
+    </form>
+    <script>
+        window.onload = function() {
+            // 添加年份选项
+            var yearSelect = document.getElementById('birthYear');
+            var currentYear = new Date().getFullYear();
+            for (var year = currentYear; year >= 1900; year--) {
+                var option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+
+            // 添加月份选项
+            var monthSelect = document.getElementById('birthMonth');
+            for (var month = 1; month <= 12; month++) {
+                var option = document.createElement('option');
+                option.value = month;
+                option.textContent = month;
+                monthSelect.appendChild(option);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册表单</title>
+</head>
+<body>
+    <h2>个人信息设置</h2>
+    <form action="exa3_2.jsp" method="post">
+        <p>
+            <label for="username" class="col-sm-3 col-form-label text-sm-right">用户名:</label>
+            <input type="text" id="username" name="username" placeholder="请输入用户名">
+        </p>
+
+        <p>
+            <label for="password">密码:</label>
+            <input type="text" id="password" name="password" placeholder="请输入 6-12 位密码">
+        </p>
+
+        <p>
+            <label for="repeatPassword">重复密码:</label>
+            <input type="text" id="repeatPassword" name="repeatPassword" placeholder="请重复输入一次密码">
+        </p>
+
+        <p>
+            <label>性别:</label>
+            <input type="radio" id="male" name="gender" value="男">
+            <label for="male">男</label>
+            <input type="radio" id="female" name="gender" value="女">
+            <label for="female">女</label>
+        </p>
+
+        <p>
+            <label for="birthYear">生日:</label>
+                <select id="birthYear" name="birthYear">
+                    <option value="" disabled selected>年</option>
+                    <!-- 年份选项将由 JavaScript 动态添加 -->
+                </select>
+                <select id="birthMonth" name="birthMonth">
+                    <option value="" disabled selected>月</option>
+                    <!-- 月份选项将由 JavaScript 动态添加 -->
+                </select>
+        </p>
+
+        <p>
+            <label>性格:</label>
+            <span id="personality-container" style="display: inline-block">
+                <!-- JavaScript 会在这里生成复选框 -->
+            </span>
+        </p>
+
+        <p>
+            <label for="education">教育程度:</label>
+                <select id="education" name="education">
+                    <option value="未知" selected>未知</option>
+                    <option value="中学">中学</option>
+                    <option value="高中">高中</option>
+                    <option value="专科">专科</option>
+                    <option value="本科">本科</option>
+                    <option value="硕士">硕士</option>
+                </select>
+        </p>
+
+        <p>
+            <label for="bio">个人简介:</label>
+            <textarea id="bio" name="bio"></textarea>
+        </p>
+
+        <p>
+            <input type="submit" value="注册">
+            <input type="reset" value="重置">
+        </p>
+    </form>
+<script>
+    window.onload = function() {
+        // 添加年份选项
+        var yearSelect = document.getElementById('birthYear');
+        var currentYear = new Date().getFullYear();
+        for (var year = currentYear; year >= 1900; year--) {
+            var option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+
+        // 添加月份选项
+        var monthSelect = document.getElementById('birthMonth');
+        for (var month = 1; month <= 12; month++) {
+            var option = document.createElement('option');
+            option.value = month;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        }
+    }
+
+    // 添加性格复选框
+    document.addEventListener('DOMContentLoaded', function() {
+        var personalityTraits = [
+            { id: "gentle", text: "温柔" },
+            { id: "cheerful", text: "开朗" },
+            { id: "lively", text: "活泼" },
+            { id: "introverted", text: "内向" },
+            { id: "silent", text: "沉默" },
+            { id: "impatient", text: "急躁" }
+        ];
+
+        var container = document.getElementById('personality-container');
+
+        personalityTraits.forEach(function(trait) {
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = trait.id;
+            checkbox.name = 'personality';
+            checkbox.value = trait.text;
+
+            var label = document.createElement('label');
+            label.htmlFor = trait.id;
+            label.textContent = trait.text;
+
+            container.appendChild(checkbox);
+            container.appendChild(label);
+            container.appendChild(document.createTextNode(' '));
+        });
+    });
+</script>
+</body>
+</html>

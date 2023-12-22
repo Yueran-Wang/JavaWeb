@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Table</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center" style="font-size: 1.2em;">
+                    请输入表格尺
+                </div>
+                <div class="card-body">
+                    <form action="test-for.jsp" method="post">
+                        <div class="form-group">
+                            <label for="rows">行数:</label>
+                            <input type="number" class="form-control" id="rows" name="rows" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cols">列数:</label>
+                            <input type="number" class="form-control" id="cols" name="cols" min="1" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">生成表格</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
